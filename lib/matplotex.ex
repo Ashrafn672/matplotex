@@ -224,6 +224,10 @@ defmodule Matplotex do
     bar(pos, values, width, [])
   end
 
+  def tough_bar(values, width, opts) do
+    Matplotex.Figure.Areal.ToughBar.create(values, width, opts)
+  end
+
   @doc """
   Adds an additional dataset to a bar plot in the given `%Figure{}`.
 

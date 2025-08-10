@@ -10,13 +10,28 @@ defmodule Matplotex.MixProject do
       start_permanent: Mix.env() == :prod,
       elixirc_paths: elixirc_paths(Mix.env()),
       deps: deps(),
-      package: package()
+      package: package(),
+      rustler: [
+        crates: [
+          matplotex_areal: [
+            mode: :precompile,
+            tragets: [
+              "x86_64-unknown-linux-gnu",
+              "aarch64-unknown-linux-gnu",
+              "x86_64-apple-darwin",
+              "aarch64-apple-darwin"
+            ]
+          ]
+        ],
+
+      ]
     ]
   end
 
   defp package do
     [
       description: "A library for generating plots in Elixir.",
+      files: ["lib", "native", "mix.exs", "README.md"],
       licenses: ["MIT"],
       links: %{
         "GitHub" => "https://github.com/bigthinkcode/matplotex"
